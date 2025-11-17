@@ -7,8 +7,6 @@
 // const EmployeeModel = require ("./Models/Employee")
 // const PaymentModel = require ("./Models/Paymodel")
 
-
-
 // // dotenv.config()
 
 // const app = express();
@@ -16,8 +14,6 @@
 // app.use(express.json()); // parse JSON bodies
 // app.use(cors()); // enable CORS
 // // connect to MongoDB
-
-
 
 // // Connect to MongoDB Atlas
 // mongoose.connect(process.env.MONGO_URI, {
@@ -39,10 +35,6 @@
 //     .then(payment => res.json(payment))
 //     .catch(err => res.json(err));
 // });
-
-
-
-
 
 // app.post("/login",(req,res)=> {
 //     const {email,password} = req.body
@@ -70,9 +62,6 @@
 //     console.log("Server running on port 3001")
 // })
 
-
-
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -87,9 +76,10 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB Atlas"))
-  .catch(err => console.log("MongoDB Atlas Connection Error:", err));
+  .catch((err) => console.log("MongoDB Atlas Connection Error:", err));
 
 app.get("/", (req, res) => {
   res.send({
@@ -112,7 +102,8 @@ app.post("/login", async (req, res) => {
   try {
     const user = await EmployeeModel.findOne({ email });
     if (!user) return res.status(400).json("User not found");
-    if (user.password !== password) return res.status(400).json("Invalid Password");
+    if (user.password !== password)
+      return res.status(400).json("Invalid Password");
     res.json("Login Successful");
   } catch (err) {
     res.status(500).json(err);
