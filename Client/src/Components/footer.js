@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const footer = () => {
   return (
     <div>
@@ -11,16 +11,16 @@ const footer = () => {
           {/* Navigation links */}
           <ul className="footer-links">
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="/">Signup</a>
+              <Link to="/">Signup</Link>
             </li>
             <li>
-              <a href="https://wa.me/923474862915">Contact</a>
+              <Link to="https://wa.me/923474862915">Contact</Link>
             </li>
             <li>
-              <a href="#privacy">Privacy Policy</a>
+              <Link to="#privacy">Privacy Policy</Link>
             </li>
           </ul>
 

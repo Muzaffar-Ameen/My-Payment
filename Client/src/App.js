@@ -12,9 +12,10 @@ import Footer from "./Components/footer";
 function App() {
   return (
     <>
-      <Header title="Payment App" searchBar={false} />
+      
       <div className="main-content">
         <BrowserRouter>
+          <Header title="Payment Form App" searchBar={false} />
           <Routes>
             <Route path="/" element={<Signup />} />
             <Route path="/login" element={<Login />} />
@@ -22,9 +23,10 @@ function App() {
             <Route path="/successfull" element={<Successful />} />
             <Route path="*" element={<h2>Page Not Found</h2>} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
-      <Footer />
+      
     </>
   );
 }
